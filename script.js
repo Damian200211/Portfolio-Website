@@ -8,7 +8,7 @@ const COMMANDS = {
 };
 
 const BOOT_SEQUENCE = [
-    `<span style='color: #00ccff'>
+    `<span class="ascii-art" style='color: #00ccff; display: inline-block;'>
   ____                        ___  ____  
  |  _ \\  __ _ _ __ ___   ___ / _ \\/ ___| 
  | | | |/ _\` | '_ \` _ \\ / _ \\ | | \\___ \\ 

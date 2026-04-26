@@ -149,3 +149,29 @@ a:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: #00ff00;
 }
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    #terminal-container {
+        padding: 15px 20px;
+    }
+    body, html {
+        font-size: 14px;
+    }
+    .ascii-art {
+        font-size: 1.8vw;
+        line-height: 1.2;
+        white-space: pre !important;
+    }
+}
+@media screen and (max-width: 480px) {
+    #terminal-container {
+        padding: 10px 10px;
+    }
+    body, html {
+        font-size: 12px;
+    }
+    .ascii-art {
+        font-size: 2.2vw;
+    }
+}
