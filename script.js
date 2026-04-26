@@ -88,10 +88,10 @@ class TerminalEmulator {
             this.clearScreen();
         } else if (lowerCmd === 'github') {
             this.printResponse("Connecting to GitHub network... <span style='color:#0f0'>[OK]</span>\nOpening profile in a new tab.");
-            setTimeout(() => window.open('https://github.com/Damian200211', '_blank'), 800);
+            window.open('https://github.com/Damian200211', '_blank');
         } else if (lowerCmd === 'resume') {
             this.printResponse("Retrieving securely encrypted resume... <span style='color:#0f0'>[OK]</span>\nOpening document in a new tab.");
-            setTimeout(() => window.open('Damian_Le_Resume.pdf', '_blank'), 800);
+            window.open('Damian_Le_Resume.pdf', '_blank');
         } else if (COMMANDS[lowerCmd]) {
             this.printResponse(COMMANDS[lowerCmd]);
         } else if (cmd !== '') {
