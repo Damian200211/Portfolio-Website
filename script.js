@@ -7,14 +7,80 @@ const COMMANDS = {
     sudo: "<span class='error-msg'>Access denied. This incident will be reported.</span>"
 };
 
+const GLOBE_WIDTH = 32;
+const GLOBE_HEIGHT = 16;
+const GLOBE_FRAMES = [];
+
+const MAP_W = 40;
+const MAP_H = 20;
+const MAP_DATA = [
+    "........................................",
+    "....@@@@@@................@@@@@@@.......",
+    "..@@@@@@@@@@...........@@@@@@@@@@@@@....",
+    "..@@@@@@@@@@...........@@@@@@@@@@@@@@...",
+    "...@@@@@@@@............@@@@@@@@@@@@@@...",
+    "....@@@@@@.............@@@@@@@@@@@@@....",
+    ".....@@@@...............@@@@@@@@@@@.....",
+    ".....@@@..................@@@@@@@@......",
+    "......@....................@@@@@@.......",
+    "...........................@@@@@........",
+    ".......@@..................@@@@.........",
+    "......@@@@..................@@..........",
+    "......@@@@@.............................",
+    ".......@@@@.............................",
+    "........@@....................@@@.......",
+    ".............................@@@@@......",
+    "..............................@@@.......",
+    "........................................",
+    "........................................",
+    "..@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.."
+];
+
+for (let i = 0; i < 15; i++) {
+    let frame = "";
+    const angle = (i / 15) * Math.PI * 2;
+    for (let y = 0; y < GLOBE_HEIGHT; y++) {
+        let line = "";
+        for (let x = 0; x < GLOBE_WIDTH; x++) {
+            const nx = (x / GLOBE_WIDTH - 0.5) * 2;
+            const ny = (y / GLOBE_HEIGHT - 0.5) * 2;
+            const d = nx * nx + ny * ny;
+            if (d > 1) {
+                line += " ";
+            } else {
+                const nz = Math.sqrt(1 - d);
+                const lon = Math.atan2(nx, nz) + angle;
+                const lat = Math.asin(ny);
+                
+                let u = (lon + Math.PI) / (2 * Math.PI);
+                let v = (lat + Math.PI/2) / Math.PI;
+                
+                u = u - Math.floor(u);
+                v = Math.max(0, Math.min(1, v));
+                
+                let mapX = Math.floor(u * MAP_W) % MAP_W;
+                let mapY = Math.floor(v * MAP_H);
+                if (mapY >= MAP_H) mapY = MAP_H - 1;
+                
+                line += MAP_DATA[mapY][mapX];
+            }
+        }
+        frame += line + "\n";
+    }
+    GLOBE_FRAMES.push(frame);
+}
+
+let currentGlobeFrame = 0;
+setInterval(() => {
+    currentGlobeFrame = (currentGlobeFrame + 1) % GLOBE_FRAMES.length;
+    const earthElements = document.querySelectorAll('.ascii-earth');
+    earthElements.forEach(el => {
+        el.textContent = GLOBE_FRAMES[currentGlobeFrame];
+    });
+}, 150);
+
 const BOOT_SEQUENCE = [
-    `<span class="ascii-art" style='color: #00ccff; display: inline-block;'>
-  ____                        ___  ____  
- |  _ \\  __ _ _ __ ___   ___ / _ \\/ ___| 
- | | | |/ _\` | '_ \` _ \\ / _ \\ | | \\___ \\ 
- | |_| | (_| | | | | | |  __/ |_| |___) |
- |____/ \\__,_|_| |_| |_|\\___|\\___/|____/ 
-</span>`,
+    `<span class="ascii-art ascii-earth" style='color: #00ccff; display: inline-block; white-space: pre; line-height: 1.2; letter-spacing: 0; min-height: 16em;'></span>`,
     "Booting DameOS v1.0.0...",
     "Kernel loaded successfully.",
     "Initialize terminal services... <span style='color:#0f0'>[OK]</span>",
