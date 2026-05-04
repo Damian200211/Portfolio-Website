@@ -12,17 +12,20 @@ A premium, retro-style interactive web terminal built to showcase my projects, s
 
 ## 🛠️ Available Commands
 
-| Command    | Description                                              |
-|------------|----------------------------------------------------------|
-| `help`     | Show the list of available commands                      |
-| `about`    | Brief description about me and my background             |
-| `projects` | View my featured software and machine learning projects  |
-| `skills`   | View my technical skills and tech stack                  |
-| `contact`  | Get my email, phone, GitHub, and LinkedIn links          |
-| `github`   | Automatically open my GitHub profile in a new tab        |
-| `resume`   | View & Download my securely encrypted PDF Resume         |
-| `clear`    | Clear the terminal screen                                |
-| `sudo`     | ???                                                      |
+| Command             | Description                                              |
+|---------------------|----------------------------------------------------------|
+| `help`              | Show the list of available commands                      |
+| `about`             | Brief description about me and my background             |
+| `projects`          | View my featured software and machine learning projects  |
+| `skills`            | View my technical skills and tech stack                  |
+| `contact`           | Get my email, phone, GitHub, and LinkedIn links          |
+| `github`            | Automatically open my GitHub profile in a new tab        |
+| `resume`            | View & Download my securely encrypted PDF Resume         |
+| `weight-tracker`    | View details for Weight Tracker App                      |
+| `artemis-financial` | View details for Artemis Financial                       |
+| `3d-renderer`       | View details for 3D Scene Renderer                       |
+| `clear`             | Clear the terminal screen                                |
+| `sudo`              | ???                                                      |
 
 ## 🚀 Tech Stack
 
